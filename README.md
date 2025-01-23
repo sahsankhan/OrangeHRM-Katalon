@@ -1,17 +1,36 @@
-# Calculator BDD Testing Samples
-See https://docs.katalon.com/katalon-studio/docs/bdd-samples.html.
+# OrangeHRM Automated Testing: A BDD Implementation with Katalon Studio
 
-## Companion products
+## 1.	Project Setup
+o	Created a new Katalon Studio project.
+o	Organized folders for Test Cases, Test Suite, Object Repository, and Feature Files (BDD).
+o	Added a StepDefinitions folder under Include/scripts/groovy to store step definition files.
 
-### Katalon TestOps
+## 2.	BDD Feature Files
+o	Created feature files for each module:
+o	Login.feature (for verifying login scenarios.)
+o	AddEmployee.feature (for adding a new employee with file upload.)
+o	SearchEmployee.feature (for searching the added employee.)
+o	EmployeeAPI.feature (for API testing - GET requests to retrieve employee details).
+o	Defined Gherkin steps (Given, When, Then) to describe the scenarios.
 
-[Katalon TestOps](https://analytics.katalon.com) is a web-based application that provides dynamic perspectives and an insightful look at your automation testing data. You can leverage your automation testing data by transforming and visualizing your data; analyzing test results; seamlessly integrating with such tools as Katalon Studio and Jira; maximizing the testing capacity with remote execution.
+## 3.	Step Definitions
+o	Implemented step definitions in Groovy, mapping each Gherkin step to Katalon Studio actions:
+o	LoginSteps.groovy handles valid and invalid login steps.
+o	AddEmployeeSteps.groovy handles adding an employee, uploading files, and searching in the Employee List.
+o	APISteps.groovy handles sending GET requests to retrieve employee details and validate responses and POST requests to retrieve the valid API key.
+o	SearchEmployee.groovy handles the steps for searching an employee.
 
-* Read our [documentation](https://docs.katalon.com/katalon-analytics/docs/overview.html).
-* Ask a question on [Forum](https://forum.katalon.com/categories/katalon-analytics).
-* Request a new feature on [GitHub](CONTRIBUTING.md).
-* Vote for [Popular Feature Requests](https://github.com/katalon-analytics/katalon-analytics/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc).
-* File a bug in [GitHub Issues](https://github.com/katalon-analytics/katalon-analytics/issues).
+## 4.	Web UI Automation
+o	Used WebUI keywords (openBrowser, setText, click, verifyElementPresent, etc.) to automate the login, add employee, and search functionalities.
+o	Captured locators using Katalon’s Object Repository (e.g., btn_Login, txt_Username, txt_Password, etc.).
 
-### Katalon Studio
-[Katalon Studio](https://www.katalon.com) is a free and complete automation testing solution for Web, Mobile, and API testing with modern methodologies (Data-Driven Testing, TDD/BDD, Page Object Model, etc.) as well as advanced integration (JIRA, qTest, Slack, CI, Katalon TestOps, etc.). Learn more about [Katalon Studio features](https://www.katalon.com/features/).
+## 5.	File Upload
+o	Implemented file upload using WebUI.uploadFile 
+
+## 6.	API Testing
+o	Extracted the cookie and token value from login request
+o	Authenticate using valid credentials
+o	Extract the cookie response from the header to use and saved in the variable
+o	Created a GET request object (GET_EmployeeByID) in the Object Repository for fetching employee details.
+o	Used WS keywords (WS.sendRequest, WS.verifyResponseStatusCode) to validate status codes and JSON response data.
+
